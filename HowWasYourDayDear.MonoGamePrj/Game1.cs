@@ -16,8 +16,9 @@ namespace HowWasYourDayDear.MonoGamePrj
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        private Texture2D _desk;
 
         public Game1()
             : base()
@@ -47,7 +48,7 @@ namespace HowWasYourDayDear.MonoGamePrj
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            _desk = Content.Load<Texture2D>("Desk");
             // TODO: use this.Content to load your game content here
         }
 
@@ -83,8 +84,10 @@ namespace HowWasYourDayDear.MonoGamePrj
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            spriteBatch.Begin();
             // TODO: Add your drawing code here
-
+            spriteBatch.Draw(_desk, new Rectangle(200, 200, 64,64), Color.AntiqueWhite);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
